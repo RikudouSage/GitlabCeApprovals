@@ -18,6 +18,26 @@ If you don't use the serverless deployment, you can configure the following:
 - `HTTP_PORT` - the port the app listens on, defaults to `8080`
 - `WORKER_COUNT` - how many workers should be started, basically how many simultaneous requests can it handle, default is `100`.
 
+### Docker
+
+You can use the [ghcr.io/rikudousage/gitlab-ce-forced-approvals](https://github.com/RikudouSage/GitlabCeApprovals/pkgs/container/gitlab-ce-forced-approvals) image.
+
+- `docker run -d --restart always -it -p 8080:8080 -e GITLAB_ACCESS_TOKEN=your-bot-access-token -e GITLAB_BASE_URL=https://git.example.com ghcr.io/rikudousage/gitlab-ce-forced-approvals:latest`
+
+Or using a docker-compose:
+
+```yaml
+services:
+  gitlab_ce_forced_approvals:
+    image: ghcr.io/rikudousage/gitlab-ce-forced-approvals:latest
+    environment:
+      GITLAB_ACCESS_TOKEN: your-bot-access-token
+      GITLAB_BASE_URL: https://git.example.com
+    restart: always
+    ports:
+      - "8080:8080"
+```
+
 ### Serverless
 
 - `export GITLAB_ACCESS_TOKEN=your-bot-access-token`

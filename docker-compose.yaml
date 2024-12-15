@@ -1,0 +1,9 @@
+services:
+  gitlab_ce_forced_approvals:
+    image: ghcr.io/rikudousage/gitlab-ce-forced-approvals:latest
+    environment:
+      GITLAB_ACCESS_TOKEN: your-bot-access-token
+      GITLAB_BASE_URL: https://git.example.com
+    restart: always
+    ports:
+      - "8080:8080"

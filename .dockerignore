@@ -1,0 +1,8 @@
+/.idea
+/.bin
+/.serverless
+/node_modules
+/.gitignore
+/package.json
+/serverless.yaml
+/yarn.lock

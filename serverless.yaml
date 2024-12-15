@@ -1,0 +1,26 @@
+service: GitlabCeApprovals
+frameworkVersion: '^3'
+
+provider:
+  name: aws
+  runtime: provided.al2
+  region: eu-central-1
+  environment:
+    GITLAB_ACCESS_TOKEN: ${env:GITLAB_ACCESS_TOKEN}
+    GITLAB_BASE_URL: ${env:GITLAB_BASE_URL}
+
+plugins:
+  - serverless-go-plugin
+
+functions:
+  api:
+    handler: ./main.go
+    timeout: 20
+    events:
+      - httpApi: 'ANY /'
+      - httpApi: 'ANY /{proxy+}'
+
+custom:
+  go:
+    supportedRuntimes: ["provided.al2"]
+    buildProvidedRuntimeAsBootstrap: true

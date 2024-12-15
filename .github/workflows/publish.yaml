@@ -11,6 +11,7 @@ on:
 jobs:
   publish_docker:
     runs-on: ubuntu-latest
+    name: Publish docker
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3

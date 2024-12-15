@@ -3,6 +3,7 @@
 /.serverless
 /node_modules
 /.gitignore
+docker-compose.yaml
 /package.json
 /serverless.yaml
 /yarn.lock

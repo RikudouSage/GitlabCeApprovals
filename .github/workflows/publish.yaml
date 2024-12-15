@@ -11,6 +11,7 @@ on:
 jobs:
   publish_docker:
     runs-on: ubuntu-latest
+    permissions: write-all
     name: Publish docker
     steps:
       - name: Set up QEMU

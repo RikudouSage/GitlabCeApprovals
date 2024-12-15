@@ -6,7 +6,6 @@ import (
 	"GitlabCeForcedApprovals/worker"
 	gitlab "gitlab.com/gitlab-org/api/client-go"
 	"log"
-	"os"
 	"strconv"
 	"syscall"
 )
@@ -34,7 +33,15 @@ func init() {
 		WorkerPool = worker.NewStandardPool(workerCountInt)
 	}
 
-	Gitlab, err = gitlab.NewClient(os.Getenv("GITLAB_ACCESS_TOKEN"), gitlab.WithBaseURL(os.Getenv("GITLAB_BASE_URL")))
+	accessToken, ok := syscall.Getenv("GITLAB_ACCESS_TOKEN")
+	if !ok {
+		panic("Environment variable GITLAB_ACCESS_TOKEN is not set")
+	}
+	baseUrl, ok := syscall.Getenv("GITLAB_BASE_URL")
+	if !ok {
+		panic("Environment variable GITLAB_BASE_URL is not set")
+	}
+	Gitlab, err = gitlab.NewClient(accessToken, gitlab.WithBaseURL(baseUrl))
 	if err != nil {
 		panic(err)
 	}

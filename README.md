@@ -1,5 +1,6 @@
 Simulate approval requirements for GitLab Community Edition. A bot user creates an unresolved thread for every merge 
-request and resolves it automatically when the MR is approved.
+request and resolves it automatically when the MR is approved. For optimal use you should disable merging unless all
+threads are resolved.
 
 ## Installing
 
